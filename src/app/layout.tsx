@@ -27,7 +27,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Elene Sturua — Software Engineer",
   description:
-    "Portfolio of Elene Sturua — CS & Economics senior at Grinnell College. Software engineer, researcher, hackathon winner.",
+    "Portfolio of Elene Sturua — M.S. Computer Science at Georgia Tech. Software engineer, researcher, HackMIT winner.",
   openGraph: {
     title: "Elene Sturua — Software Engineer",
     description: "Explore my portfolio like a chess game.",

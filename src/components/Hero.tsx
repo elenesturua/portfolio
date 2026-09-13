@@ -52,7 +52,7 @@ export default function Hero() {
         </h1>
 
         <p className="font-mono text-[clamp(0.75rem,1.5vw,1rem)] text-text-muted tracking-[3px] uppercase mb-12">
-          Software Engineer · CS & Econ · Class of 2026
+          Software Engineer · M.S. Computer Science · Georgia Tech
         </p>
 
         <motion.button

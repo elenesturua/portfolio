@@ -209,33 +209,73 @@ export const HUMAN_LANGUAGES: HumanLanguage[] = [
 ];
 
 // Education data
-export interface Education {
-  institution: string;
-  degree: string;
-  minor: string;
-  expectedDate: string;
-  location: string;
-  coursework: string[];
+export interface CurrentCourse {
+  name: string;
+  piece: string;
+  notation: string;
+  note?: string;
 }
 
-export const EDUCATION: Education = {
-  institution: "Grinnell College",
-  degree: "Bachelor of Arts in Computer Science and Economics",
-  minor: "Statistics",
-  expectedDate: "Expected May 2026",
-  location: "Grinnell, IA",
-  coursework: [
-    "Operating Systems and Parallel Algorithms (C)",
-    "Analysis of Algorithms (C++, Python)",
-    "Software Design & Development",
-    "Object-Oriented Programming (Java)",
-    "Artificial Intelligence (Python)",
-    "Data Science (R, SQL)",
-    "Automata Formal Languages & Computational Complexity",
-    "Elementary Number Theory",
-    "Game Development (C#)",
-  ],
-};
+export interface Education {
+  id: string;
+  institution: string;
+  degree: string;
+  minor?: string;
+  dateLabel: string;
+  location: string;
+  status: "current" | "completed";
+  honors?: string[];
+  gpa?: string;
+  currentCourses?: CurrentCourse[];
+  coursework?: string[];
+}
+
+export const EDUCATION: Education[] = [
+  {
+    id: "edu-gt",
+    institution: "Georgia Institute of Technology",
+    degree: "M.S. in Computer Science",
+    dateLabel: "Expected Dec 2027",
+    location: "Atlanta, GA",
+    status: "current",
+    honors: [
+      "Naumann-Etienne Foundation Fellowship — merit award covering full tuition and a living stipend",
+    ],
+    currentCourses: [
+      { name: "Machine Learning", piece: CHESS_PIECES.knight, notation: "e4" },
+      { name: "Computer Vision", piece: CHESS_PIECES.bishop, notation: "d5" },
+      { name: "Human-Computer Interaction", piece: CHESS_PIECES.queen, notation: "c3" },
+      {
+        name: "Special Problems",
+        piece: CHESS_PIECES.pawn,
+        notation: "a7",
+        note: "Multilingual LLM capacity — Georgian & Russian as a low-resource comparison",
+      },
+    ],
+  },
+  {
+    id: "edu-grinnell",
+    institution: "Grinnell College",
+    degree: "B.A. with Honors in Computer Science & Economics",
+    minor: "Statistics",
+    dateLabel: "May 2026",
+    location: "Grinnell, IA",
+    status: "completed",
+    honors: ["Walker Prize for Excellence in Computer Science"],
+    gpa: "CS Major GPA 3.70 / 4.0",
+    coursework: [
+      "Operating Systems and Parallel Algorithms (C)",
+      "Analysis of Algorithms (C++, Python)",
+      "Software Design & Development",
+      "Object-Oriented Programming (Java)",
+      "Artificial Intelligence (Python)",
+      "Data Science (R, SQL)",
+      "Automata Formal Languages & Computational Complexity",
+      "Elementary Number Theory",
+      "Game Development (C#)",
+    ],
+  },
+];
 
 // Research data
 export interface Research {
@@ -250,6 +290,16 @@ export interface Research {
 }
 
 export const RESEARCH: Research[] = [
+  {
+    id: "research-gt-1",
+    role: "Special Problems — Multilingual LLM Capacity",
+    institution: "Georgia Institute of Technology",
+    dateRange: "Fall 2026 → Present",
+    description: [
+      "Independent research comparing how large language models handle Georgian and Russian — a low-resource vs. higher-resource pairing — to measure capacity, transfer, and where performance collapses when training data is scarce.",
+      "Working in my native Georgian and fluent Russian to design evaluation that actually reflects how these languages are used, not just how they appear in English-centric benchmarks.",
+    ],
+  },
   {
     id: "research-1",
     role: "Software Engineering Undergraduate Researcher",
@@ -335,9 +385,9 @@ export const HACKATHONS: Hackathon[] = [
 
 // About data
 export const ABOUT = {
-  bio: `I'm a senior at Grinnell College studying Computer Science and Economics with a minor in Statistics. Originally from Georgia 🇬🇪, I'm passionate about building things that make people's lives easier — whether that's AI-powered assistants for busy families, educational tools that help students learn to code, or games that make you think strategically.
+  bio: `I'm a Computer Science master's student at Georgia Tech, after a B.A. with Honors in Computer Science and Economics at Grinnell College — where I received the Walker Prize for Excellence in Computer Science. Originally from Georgia 🇬🇪, I like building things that make people's lives easier: production web apps, educational tools, and research that actually cares about languages the internet underrepresents.
 
-I'm currently looking for entry-level software engineering positions — backend, frontend, or full-stack. When I'm not coding, you'll find me playing volleyball or pickleball, cooking a lot of peculiar recipes (one might say), playing chess (I know, you could not guess…), or trying to finish every book Murakami wrote.`,
+This semester I'm taking Machine Learning, Computer Vision, and Human-Computer Interaction, and running a Special Problems course on multilingual LLM capacity — comparing Georgian and Russian as a low-resource language pair. When I'm not coding, you'll find me playing volleyball or pickleball, cooking a lot of peculiar recipes (one might say), playing chess (I know, you could not guess…), or trying to finish every book Murakami wrote.`,
   community: [
     "Member — Computer Science Education Policy Committee (SEPC)",
     "Member — Rewriting The Code (RTC)",
