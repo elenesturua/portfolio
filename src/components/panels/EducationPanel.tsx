@@ -59,16 +59,13 @@ function SchoolCard({ school, index }: { school: Education; index: number }) {
       </h3>
 
       <p className="font-mono text-sm text-accent-gold mb-1">{school.degree}</p>
-      <p className="font-mono text-sm text-accent-gold/70 mb-1">
+      <p className="font-mono text-sm text-accent-gold/70 mb-4">
         {school.location}
         {school.minor ? ` · Minor: ${school.minor}` : ""}
       </p>
-      {school.gpa && (
-        <p className="font-mono text-sm text-accent-gold/70 mb-4">{school.gpa}</p>
-      )}
 
       {school.honors && school.honors.length > 0 && (
-        <ul className={`space-y-2 ${school.gpa || school.minor ? "mt-2" : "mt-4"} mb-6`}>
+        <ul className="space-y-2 mb-6">
           {school.honors.map((honor) => (
             <li
               key={honor}

@@ -35,8 +35,8 @@ export default function AboutPanel() {
         <h3 className="font-playfair text-lg font-bold mb-4">Community Involvement</h3>
         <ul className="space-y-2 text-text-muted text-sm">
           {ABOUT.community.map((item, i) => (
-            <li key={i} className="flex items-center gap-2">
-              <span className="text-accent-gold">♟</span>
+            <li key={i} className="flex items-start gap-2.5">
+              <span className="text-accent-gold mt-0.5 shrink-0">♟</span>
               {item}
             </li>
           ))}

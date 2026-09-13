@@ -28,7 +28,7 @@ export default function ResearchPanel() {
               <div className="text-lg mb-2">📄</div>
             )}
             
-            <h3 className={`font-playfair font-bold mb-1 ${research.isPublication ? "text-lg" : "text-xl"}`}>
+            <h3 className={`font-playfair font-bold mb-1 pr-24 ${research.isPublication ? "text-lg" : "text-xl"}`}>
               {research.role}
             </h3>
             

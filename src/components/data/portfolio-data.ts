@@ -52,16 +52,38 @@ export interface Experience {
 
 export const EXPERIENCES: Experience[] = [
   {
-    id: "exp-1",
-    role: "Software Engineering Intern",
-    company: "Busy Family AI — Pre-Seed Startup",
-    location: "Remote",
-    dateRange: "Dec 2025 → Present",
+    id: "exp-research",
+    role: "Special Problems Researcher — Multilingual LLMs",
+    company: "Georgia Tech ML Center · Advisor: Prof. Wei Xu",
+    location: "Atlanta, GA",
+    dateRange: "Fall 2026 → Present",
     description: [
-      "Architected and deployed a scalable session management backend using Kotlin, AWS Lambda, and DynamoDB, implementing token-based authentication to secure 100+ daily sessions.",
+      "Designed a native-speaker error-analysis study of LLM translation on Georgian (low-resource) and Russian, building a severity-graded taxonomy and evaluating 6 production systems (GPT, Gemini, Grok, Qwen).",
+      "Found models inject grammatical gender in ~53% of genderless-Georgian outputs vs. 0% in Russian, isolating a data-scarcity failure mode — with polypersonal-verb argument-drop errors unique to Georgian.",
+    ],
+  },
+  {
+    id: "exp-codio",
+    role: "Software Engineering Intern",
+    company: "Codio — Interactive Coding-Education Platform",
+    location: "Remote",
+    dateRange: "June 2026 → Aug 2026",
+    description: [
+      "Owned Portunus end-to-end as sole engineer and product owner — shipped a self-service, customer-facing bookstore ordering portal (Next.js 15, TypeScript, MongoDB) from an empty repo to production (Docker → ECR → Nomad), replacing a multi-day manual email workflow for 100+ bookstores.",
+      "Designed and built the integration layer against Codio’s internal Black Market gRPC API (ConnectRPC over an SSH tunnel) to mint and revoke access codes against catalog plans, with feature flags isolating mock and live backends for staged rollout.",
+      "Made fulfillment reliable and resilient: eliminated a double-refund race by atomically claiming each code ($pull/$addToSet) before revoke/mint, and hardened the path to fail fast without orphaning codes (persist-before-email, 30s gRPC deadlines, defensive parsing).",
+    ],
+  },
+  {
+    id: "exp-1",
+    role: "Founding Software Engineer",
+    company: "Busy Family AI — Pre-Seed AI Startup",
+    location: "Remote",
+    dateRange: "Sep 2025 → May 2026",
+    description: [
+      "As founding engineer on a 2-person team, shipped production Kotlin/Ktor agent features to 100+ families/day across web chat and SMS, on AWS (S3, SNS, Bedrock) with WebSocket streaming.",
+      "Fixed a production reliability bug — rich recipe/event cards vanishing after mobile backgrounding — by persisting elements in Redis and restoring them on WebSocket re-entry.",
       "Integrated ElevenLabs audio voiceover capabilities into the platform, enabling AI-generated spoken daily briefs and recipe walkthroughs for a hands-free user experience.",
-      "Identified and resolved a critical session reentry UX issue where conversation context appeared lost despite Redis-backed state persistence — redesigned the frontend recovery flow to restore seamless session continuity for 50+ daily active users.",
-      "Optimized data synchronization by integrating Google Calendar webhooks with vector embeddings, reducing sync latency from hours to <100ms to enable real-time semantic search capabilities.",
     ],
   },
   {
@@ -69,10 +91,10 @@ export const EXPERIENCES: Experience[] = [
     role: "DASIL Mentor (Data Analysis and Social Inquiry Lab)",
     company: "Grinnell College",
     location: "Grinnell, IA",
-    dateRange: "Aug 2025 → Present",
+    dateRange: "Aug 2025 → May 2026",
     description: [
-      "Mentor students across disciplines in using R, Stata, and SQL for data wrangling, visualization, and statistical modeling, helping them translate raw data into actionable insights.",
-      "Collaborate with faculty and peers on applied research projects involving public health, political science, and economics datasets.",
+      "Mentored students across disciplines in using R, Stata, and SQL for data wrangling, visualization, and statistical modeling, helping them translate raw data into actionable insights.",
+      "Collaborated with faculty and peers on applied research projects involving public health, political science, and economics datasets.",
       "Translated a full semester of Stata-based econometrics problem sets into R, improving accessibility and reproducibility for R-based workflows.",
     ],
   },
@@ -81,11 +103,11 @@ export const EXPERIENCES: Experience[] = [
     role: "Language Tutor — Georgian",
     company: "Grinnell's Center for Languages and Intercultural Communication",
     location: "Grinnell, IA",
-    dateRange: "Jan 2026 → Present",
+    dateRange: "Jan 2026 → May 2026",
     description: [
-      "Designed and teaching an A1-level Georgian language course with structured curriculum covering the 33-letter script, vocabulary, and cultural context.",
+      "Designed and taught an A1-level Georgian language course with structured curriculum covering the 33-letter script, vocabulary, and cultural context.",
       "Built a companion web platform (KartvelLingo) with interactive quizzes and gamified learning flows to supplement in-class instruction.",
-      "Lead two weekly discussion-based classes emphasizing active language use, pronunciation, and conversational practice.",
+      "Led two weekly discussion-based classes emphasizing active language use, pronunciation, and conversational practice.",
     ],
   },
   {
@@ -113,6 +135,24 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    id: "proj-acorn",
+    name: "AcornASL",
+    piece: CHESS_PIECES.bishop,
+    tech: ["React", "TypeScript", "MediaPipe", "Transformers.js"],
+    description:
+      "Browser-based ASL practice partner running two ML pipelines fully client-side — webcam sign recognition (MediaPipe) and a quantized in-browser LLM (Transformers.js, WebGPU) — with no backend or inference server.",
+    links: [{ label: "GitHub", url: "https://github.com/AcornSL/AcornSL" }],
+  },
+  {
+    id: "proj-food",
+    name: "FoodSaving",
+    piece: CHESS_PIECES.pawn,
+    tech: ["React Native", "React", "TypeScript"],
+    description:
+      "A Too Good To Go–style surplus-food marketplace in React Native and React: leftover meals from local spots, listed before they get thrown out, so good food gets eaten instead of wasted.",
+    links: [{ label: "GitHub", url: "https://github.com/elenesturua/FoodSaving" }],
+  },
   {
     id: "proj-1",
     name: "BubbledIn",
@@ -225,7 +265,6 @@ export interface Education {
   location: string;
   status: "current" | "completed";
   honors?: string[];
-  gpa?: string;
   currentCourses?: CurrentCourse[];
   coursework?: string[];
 }
@@ -249,7 +288,7 @@ export const EDUCATION: Education[] = [
         name: "Special Problems",
         piece: CHESS_PIECES.pawn,
         notation: "a7",
-        note: "Multilingual LLM capacity — Georgian & Russian as a low-resource comparison",
+        note: "LLM translation errors — Georgian & Russian · advised by Prof. Wei Xu",
       },
     ],
   },
@@ -262,7 +301,6 @@ export const EDUCATION: Education[] = [
     location: "Grinnell, IA",
     status: "completed",
     honors: ["Walker Prize for Excellence in Computer Science"],
-    gpa: "CS Major GPA 3.70 / 4.0",
     coursework: [
       "Operating Systems and Parallel Algorithms (C)",
       "Analysis of Algorithms (C++, Python)",
@@ -292,12 +330,14 @@ export interface Research {
 export const RESEARCH: Research[] = [
   {
     id: "research-gt-1",
-    role: "Special Problems — Multilingual LLM Capacity",
-    institution: "Georgia Institute of Technology",
-    dateRange: "Fall 2026 → Present",
+    role: "LLM Translation Error Analysis — Georgian & Russian",
+    institution: "Georgia Tech ML Center · advised by Prof. Wei Xu",
+    dateRange: "2026 → Present",
     description: [
-      "Independent research comparing how large language models handle Georgian and Russian — a low-resource vs. higher-resource pairing — to measure capacity, transfer, and where performance collapses when training data is scarce.",
-      "Working in my native Georgian and fluent Russian to design evaluation that actually reflects how these languages are used, not just how they appear in English-centric benchmarks.",
+      "Framed a low-resource NLP study as a Georgian-vs-Russian natural experiment to separate language-specific translation failures (data scarcity, typological distance) from concept-level ones (figurative/cultural content).",
+      "Built a severity-graded error taxonomy extending prior idiom-evaluation work, and designed a controlled prompting-and-annotation protocol across production LLMs and dedicated MT systems.",
+      "Coded 84 model outputs as the sole native-speaker annotator; quantified a gender-injection rate of 19/36 (~53%) in Georgian vs. 0/48 in Russian, plus polypersonal-verb argument-drop errors unique to Georgian.",
+      "Conducted the literature review across gender bias, tokenization, and multilingual reasoning to ground the taxonomy.",
     ],
   },
   {
@@ -387,8 +427,10 @@ export const HACKATHONS: Hackathon[] = [
 export const ABOUT = {
   bio: `I'm a Computer Science master's student at Georgia Tech, after a B.A. with Honors in Computer Science and Economics at Grinnell College — where I received the Walker Prize for Excellence in Computer Science. Originally from Georgia 🇬🇪, I like building things that make people's lives easier: production web apps, educational tools, and research that actually cares about languages the internet underrepresents.
 
-This semester I'm taking Machine Learning, Computer Vision, and Human-Computer Interaction, and running a Special Problems course on multilingual LLM capacity — comparing Georgian and Russian as a low-resource language pair. When I'm not coding, you'll find me playing volleyball or pickleball, cooking a lot of peculiar recipes (one might say), playing chess (I know, you could not guess…), or trying to finish every book Murakami wrote.`,
+This semester I'm taking Machine Learning, Computer Vision, and Human-Computer Interaction, and running a Special Problems study with Prof. Wei Xu on LLM translation errors in Georgian and Russian. When I'm not coding, you'll find me playing volleyball or pickleball, cooking a lot of peculiar recipes (one might say), playing chess (I know, you could not guess…), or trying to finish every book Murakami wrote.`,
   community: [
+    "Organizer — Graduate Women in Engineering (GWIE); one of six new members leading events and programming",
+    "Project Manager — Student Alumni Association (SAA) Web Development Group",
     "Member — Computer Science Education Policy Committee (SEPC)",
     "Member — Rewriting The Code (RTC)",
   ],
@@ -396,7 +438,7 @@ This semester I'm taking Machine Learning, Computer Vision, and Human-Computer I
 
 // Contact data
 export const CONTACT = {
-  email: "sturuael@grinnell.edu",
+  email: "esturua3@gatech.edu",
   linkedin: "https://linkedin.com/in/elenesturua",
   github: "https://github.com/elenesturua",
 };

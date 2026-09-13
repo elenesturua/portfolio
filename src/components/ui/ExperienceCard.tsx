@@ -18,9 +18,9 @@ export default function ExperienceCard({ experience, index }: ExperienceCardProp
                  bg-accent-gold/[0.02] hover:border-card-hover-border
                  hover:translate-x-2 hover:bg-accent-gold/[0.04]"
     >
-      <h3 className="font-playfair text-xl font-bold mb-1">{experience.role}</h3>
+      <h3 className="font-playfair text-xl font-bold mb-1 pr-28">{experience.role}</h3>
       
-      <p className="font-mono text-sm text-accent-gold mb-3">{experience.company}</p>
+      <p className="font-mono text-sm text-accent-gold mb-3 pr-28">{experience.company}</p>
       
       <div className="absolute top-4 right-4 font-mono text-[0.65rem] text-text-muted tracking-wider">
         {experience.dateRange}
